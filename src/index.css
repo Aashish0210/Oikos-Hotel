@@ -54,6 +54,11 @@ h1, h2, h3, h4 {
     color: var(--secondary);
 }
 
+h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
+h2 { font-size: clamp(2rem, 6vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 4vw, 1.75rem); }
+h4 { font-size: clamp(1.2rem, 3vw, 1.4rem); }
+
 a {
     text-decoration: none;
     color: inherit;
@@ -333,6 +338,17 @@ a {
     margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+    .hero { min-height: 85vh; padding-top: 100px; }
+    .hero-content { padding: 0 1.5rem; text-align: center; }
+    .hero-text-box { margin: 0 auto; }
+    .hero .subtitle { font-size: 0.65rem; padding: 0.4rem 1rem; }
+    .hero-actions { flex-direction: column; width: 100%; gap: 1rem; }
+    .hero-actions .btn { width: 100%; }
+    .hero-lower-info { padding: 2.5rem 1rem; position: relative; background: var(--secondary); margin-top: -1px; }
+    .info-grid { flex-direction: column; gap: 2.5rem; text-align: center; }
+}
+
 .info-item {
     text-align: left;
 }
@@ -530,9 +546,11 @@ a {
 }
 
 @media (max-width: 640px) {
-    .room-grid {
-        grid-template-columns: 1fr;
-    }
+    .room-grid { display: block; }
+    .room-card { margin-bottom: 2.5rem; }
+    .room-info { padding: 1.5rem; }
+    .room-price { font-size: 1rem; }
+    .room-footer { padding-top: 1rem; }
 }
 
 .room-card {
@@ -1325,8 +1343,15 @@ a {
 
 
 @media (max-width: 768px) {
-    .booking-portal { padding-top: 100px; }
-    .booking-summary-bar { flex-direction: column; gap: 15px; text-align: center; }
+    .booking-portal { padding-top: 100px; padding-bottom: 4rem; }
+    .booking-header { margin-bottom: 2.5rem; }
+    .booking-step-container { padding: 2rem 1.5rem; margin: 0 1rem; }
+    .booking-step-container h3 { font-size: 1.5rem; margin-bottom: 2rem; }
+    .booking-form-grid { gap: 2rem; }
+    .flatpickr-calendar { width: 100% !important; max-width: 320px; }
+    .room-selection-grid { padding: 0 1rem; }
+    .room-selection-card { margin-bottom: 1.5rem; }
+    .price-box { flex-direction: column; gap: 1.5rem; align-items: stretch; }
 }
 
 /* Success Card Styling */
@@ -1368,4 +1393,76 @@ a {
     width: 100%;
     color: var(--text-muted);
     text-align: center;
+}
+
+/* 
+==================================================
+RADICAL MOBILE OVERHAUL (Optimized for 375px-480px)
+================================================== 
+*/
+@media (max-width: 640px) {
+    /* Global Adjustments */
+    .section { padding: 4rem 1rem !important; }
+    .container { padding: 0 1.25rem; }
+    
+    /* Navigation */
+    #main-nav { height: 70px; }
+    .nav-wrapper { justify-content: space-between; gap: 0; }
+    .logo { gap: 2px; }
+    .logo .oikos { font-size: 1rem; }
+    .logo .hotel { font-size: 0.5rem; }
+    .nav-links { display: none; } /* Hide secondary links on mobile to save space */
+    .nav-btn { font-size: 0.65rem; padding: 0.75rem 1rem; }
+
+    /* Hero Section */
+    .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; }
+    .hero-content { padding: 0; text-align: center; }
+    .hero h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 1.5rem; }
+    .hero-actions { display: flex; flex-direction: column; width: 100%; gap: 1rem; }
+    .hero-actions .btn { width: 100%; justify-content: center; padding: 1.15rem; }
+    
+    .hero-lower-info { position: relative; background: var(--secondary); padding: 3rem 1rem; margin-top: -1px; }
+    .info-grid { flex-direction: column; gap: 2.5rem; }
+    .info-item { text-align: center !important; }
+    .info-item strong { font-size: 1.75rem; }
+
+    /* Room Cards */
+    .room-grid { display: block; }
+    .room-card { margin-bottom: 3.5rem; border-radius: 12px; }
+    .room-carousel img { height: 240px; }
+    .room-info { padding: 2rem 1.25rem; }
+    .room-info h3 { font-size: 1.4rem; }
+    .room-footer { flex-direction: column; align-items: stretch; gap: 1.5rem; padding-top: 1.5rem; }
+    .room-price { text-align: center; font-size: 1.15rem; width: 100%; }
+    .room-footer .btn { width: 100%; }
+
+    /* Booking Portal */
+    .booking-portal { padding-top: 100px; padding-bottom: 3rem; }
+    .booking-header { margin-bottom: 2rem; }
+    .booking-header .section-title { font-size: 1.8rem; }
+    .booking-step-container { padding: 2.5rem 1.25rem; margin: 0; border-radius: 0; box-shadow: none; border-left: none; border-right: none; }
+    .booking-step-container h3 { font-size: 1.5rem; margin-bottom: 2rem; }
+    .booking-form-grid { flex-direction: column; gap: 2rem; margin-bottom: 2.5rem; }
+    
+    .flatpickr-calendar { width: 100% !important; max-width: 310px; left: 50% !important; transform: translateX(-50%) !important; }
+    
+    .room-selection-grid { padding: 0 1rem; gap: 1.5rem; }
+    .room-selection-card { flex-direction: column; border-radius: 12px; margin-bottom: 1rem; }
+    .room-selection-card img { width: 100%; height: 210px; }
+    .room-selection-card .content { padding: 1.75rem 1.25rem; }
+    .room-selection-card h4 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .selection-description { font-size: 0.9rem; margin-bottom: 1.25rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+    
+    .price-box { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .pricing { justify-content: center; width: 100%; }
+    .price-box .btn { width: 100%; }
+
+    /* Confirmation Card */
+    .success-card { padding: 4rem 1.25rem !important; }
+    .success-icon-box { margin-bottom: 2rem; }
+
+    /* Footer */
+    .footer-top { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+    .footer-info, .footer-nav, .footer-contact { align-items: center; }
+    .footer-bottom { flex-direction: column; gap: 1.25rem; text-align: center; }
 }
