@@ -86,17 +86,17 @@ a {
     left: 0;
     width: 100%;
     z-index: 1100;
-    padding: 2rem 0;
+    padding: 1.25rem 0;
     background: transparent;
-    transition: var(--transition-base);
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 #main-nav.scrolled {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px); /* Modern frosted glass effect */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    padding: 1rem 0;
+    padding: 0;
     box-shadow: var(--shadow-md);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -105,12 +105,14 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 68px;
+    padding: 0.75rem 0;
 }
 
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .logo {
@@ -214,7 +216,25 @@ a {
     border: none;
     cursor: pointer;
     z-index: 1200;
+    padding: 0;
 }
+
+/* Mobile menu backdrop overlay */
+.nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1100;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    transition: opacity 0.3s ease;
+}
+
+.nav-backdrop.active {
+    display: block;
+}
+
 
 .mobile-toggle span {
     width: 100%;
@@ -345,8 +365,11 @@ a {
     .hero .subtitle { font-size: 0.65rem; padding: 0.4rem 1rem; }
     .hero-actions { flex-direction: column; width: 100%; gap: 1rem; }
     .hero-actions .btn { width: 100%; }
-    .hero-lower-info { padding: 2.5rem 1rem; position: relative; background: var(--secondary); margin-top: -1px; }
-    .info-grid { flex-direction: column; gap: 2.5rem; text-align: center; }
+    .hero-lower-info { padding: 1.5rem 1rem 2rem; position: relative; background: var(--secondary); margin-top: -1px; }
+    /* Keep info-grid horizontal on mobile - compact 3-column row */
+    .info-grid { flex-direction: row; gap: 0; justify-content: space-around; text-align: center; }
+    .info-item strong { font-size: 1.25rem; margin-bottom: 0.35rem; }
+    .info-item span { font-size: 0.6rem; letter-spacing: 0.1em; }
 }
 
 .info-item {
@@ -907,7 +930,7 @@ a {
 }
 
 @media (max-width: 991px) {
-    .container { padding: 0 30px; }
+    .container { padding: 0 20px; }
     .nav-links { gap: 20px; }
 }
 
@@ -917,54 +940,101 @@ a {
     .section { padding: 60px 0; }
     .section-title { font-size: 2rem; }
 
-    /* Mobile Nav */
+    /* ─── Mobile Nav: always dark glass so logo is readable ─── */
+    #main-nav {
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* When scrolled on mobile: stay dark (don't go white) */
+    #main-nav.scrolled {
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* Logo stays white on mobile nav */
+    #main-nav .logo,
+    #main-nav.scrolled .logo {
+        color: var(--white);
+    }
+
+    /* Toggle hamburger stays white on mobile */
+    #main-nav .mobile-toggle span,
+    #main-nav.scrolled .mobile-toggle span {
+        background-color: var(--white);
+    }
+
+    /* Mobile Toggle visible */
     .mobile-toggle { display: flex; }
-    
+
+    /* Slide-in menu panel */
     .nav-links {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 80%;
+        width: min(280px, 80vw);
         height: 100vh;
         background: var(--secondary);
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        transition: 0.4s ease;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 0;
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1150;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+        box-shadow: -8px 0 32px rgba(0,0,0,0.4);
+        padding-top: 72px; /* offset for navbar height */
+        border-left: 1px solid rgba(255,255,255,0.06);
     }
 
     .nav-links.active {
         right: 0;
     }
 
+    .nav-links li {
+        width: 100%;
+    }
+
     .nav-links a {
-        font-size: 1.2rem;
+        display: block;
+        font-size: 1rem;
+        letter-spacing: 0.15em;
+        color: rgba(255,255,255,0.85) !important;
+        padding: 1.1rem 2rem;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        transition: background 0.2s, color 0.2s;
     }
 
+    .nav-links a:hover {
+        color: var(--accent) !important;
+        background: rgba(255,255,255,0.04);
+    }
+
+    /* Direct Booking button compact on mobile */
     .nav-btn {
-        display: none; /* Hide book now button on very small nav to prioritize hamburger */
-    }
-    
-    #main-nav.scrolled .nav-btn {
-        display: inline-block;
-        padding: 6px 15px;
-        font-size: 0.7rem;
+        display: inline-flex !important;
+        padding: 0.45rem 0.9rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.06em;
     }
 
-    .hero { height: auto; padding: 140px 0 80px; text-align: center; }
-    .hero h1 { font-size: 2.5rem; }
+    /* ─── Hero ─── */
+    .hero { height: auto; padding: 130px 0 70px; text-align: center; }
+    .hero h1 { font-size: 2.4rem; }
     .hero-actions { justify-content: center; flex-direction: column; }
     .hero-bg img { filter: brightness(0.5); }
-    
-    .hero-lower-info { position: static; background: var(--secondary); padding: 40px 0; }
-    .info-grid { flex-direction: column; gap: 30px; }
+    .hero-lower-info { position: static; background: var(--secondary); padding: 1.5rem 0 2rem; }
 
+    /* ─── Story ─── */
     .story-content { order: 2; }
     .story-image { order: 1; margin-bottom: 20px; }
 
+    /* ─── Footer ─── */
     .footer-top { flex-direction: column; text-align: center; align-items: center; }
     .footer-info { max-width: 100%; }
 }
@@ -983,14 +1053,23 @@ a {
 /* Reveal Animations */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1s cubic-bezier(0.2, 1, 0.3, 1), transform 1s cubic-bezier(0.2, 1, 0.3, 1);
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1), transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
     will-change: transform, opacity;
 }
 
 .reveal.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Ensure reveal elements never stay hidden on unsupported devices */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
 /* Booking Portal Modernization */
@@ -1230,6 +1309,54 @@ a {
     border-radius: var(--radius-md);
     margin-bottom: 3rem;
     box-shadow: var(--shadow-lg);
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.summary-item {
+    font-size: 0.9rem;
+    opacity: 0.95;
+    line-height: 1.4;
+}
+
+.summary-item strong {
+    color: var(--primary-light);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 0.2rem;
+    font-weight: 800;
+    opacity: 0.75;
+}
+
+.booking-summary-bar .btn {
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    backdrop-filter: blur(4px);
+}
+
+.booking-summary-bar .btn:hover {
+    background: rgba(255,255,255,0.22);
+    border-color: rgba(255,255,255,0.5);
+}
+
+@media (max-width: 600px) {
+    .booking-summary-bar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.25rem 1.5rem;
+        gap: 1rem;
+    }
+    .booking-summary-bar .summary-item {
+        font-size: 0.85rem;
+    }
+    .booking-summary-bar .btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 .room-selection-grid {
@@ -1397,81 +1524,310 @@ a {
 
 /* 
 ==================================================
-RADICAL MOBILE OVERHAUL (Optimized for 375px-480px)
+  MOBILE-FIRST RESPONSIVE (≤ 640px)
+  Optimized for iPhone SE → iPhone 15 Pro Max
 ================================================== 
 */
 @media (max-width: 640px) {
-    /* Global Adjustments */
-    .section { padding: 4rem 1rem !important; }
-    .container { padding: 0 1.25rem; }
-    
-    /* Enhanced Mobile Navbar */
-    #main-nav { 
-        height: 65px; 
-        background: rgba(15, 23, 42, 0.95) !important; 
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .nav-wrapper { padding: 0 1.25rem; height: 100%; }
-    .logo .oikos { font-size: 0.9rem; }
-    .logo .hotel { font-size: 0.45rem; }
-    .nav-btn { background: var(--accent) !important; color: var(--secondary) !important; font-weight: 800; border: none; }
 
-    /* Modern Mobile Hero Stats */
-    .hero { min-height: 75vh; }
-    .hero-lower-info { 
-        position: relative; 
-        background: var(--secondary); 
-        padding: 2rem 0; 
-        border-top: 4px solid var(--accent);
-    }
-    .info-grid { 
-        display: grid !important; 
-        grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 0.5rem !important;
-        padding: 0 1rem;
-    }
-    .info-item { text-align: center !important; }
-    .info-item strong { font-size: 1.25rem !important; display: block; margin-bottom: 0.25rem; color: var(--accent); }
-    .info-item p { font-size: 0.55rem !important; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); opacity: 0.8; }
+    /* ─── GLOBAL ─── */
+    .section { padding: 4rem 1.25rem !important; }
+    .container { padding: 0 1.25rem !important; }
 
-    /* Room Cards */
+
+    /* ─── NAVBAR ─── */
+    #main-nav {
+        height: 64px;
+        padding: 0;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+    }
+    #main-nav.scrolled {
+        background: rgba(15, 23, 42, 0.97) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.4) !important;
+        padding: 0 !important; /* Never shrink — keep full 64px height */
+    }
+    #main-nav.dark-mode {
+        background: rgba(15, 23, 42, 0.97) !important;
+    }
+    .nav-wrapper {
+        padding: 0 1.25rem;
+        height: 64px !important; /* Always fixed — logo never clips */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    /* Keep full logo visible on scroll */
+    .logo .the   { font-size: 0.55rem; opacity: 0.9; }
+    .logo .oikos { font-size: 1.1rem; }
+    .logo .hotel { font-size: 0.4rem; letter-spacing: 0.2em; }
+    .mobile-toggle { display: flex; }
+    .nav-btn { font-size: 0.62rem; padding: 0.5rem 0.9rem; border-radius: 6px; }
+
+    /* Professional slide-down nav menu */
+    .nav-links {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 1);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        display: none;
+        z-index: 1050;
+        border-top: 2px solid var(--accent);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    .nav-links.active { display: flex; }
+    .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-links li a {
+        display: block;
+        padding: 1.1rem 1.75rem;
+        color: rgba(255,255,255,0.85) !important;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        transition: color 0.2s, padding-left 0.2s;
+    }
+    .nav-links li a:hover {
+        color: var(--accent) !important;
+        padding-left: 2.25rem;
+    }
+
+
+    /* ─── HERO SECTION ─── */
+    .hero {
+        height: 100svh; /* safe viewport height on mobile browsers */
+        min-height: 580px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    /* The main hero text area takes up the full height */
+    .hero-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 80px 2rem 1.5rem; /* top padding clears the navbar */
+        position: relative;
+        z-index: 10;
+        width: 100%;
+    }
+
+    .hero-text-box {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Hide the location badge on mobile — too much clutter */
+    .hero .subtitle { display: none; }
+
+    .hero h1 {
+        font-size: 2.4rem;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+        color: var(--white);
+    }
+    .hero .tagline {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+        max-width: 80%;
+        opacity: 0.85;
+        font-style: italic;
+        color: var(--white);
+    }
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        gap: 0.75rem;
+        margin: 0 auto;
+    }
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.95rem 1.5rem;
+        font-size: 0.78rem;
+    }
+
+    /* Stats strip — compact, clean 3-col bar */
+    .hero-lower-info {
+        background: rgba(15, 23, 42, 0.97);
+        padding: 1rem 0;
+        border-top: 2px solid var(--accent);
+        position: relative;
+        z-index: 10;
+    }
+    .info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0 !important;
+        width: 100%;
+    }
+    .info-item {
+        text-align: center !important;
+        padding: 0.65rem 0.25rem;
+        border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .info-item:last-child { border-right: none; }
+    .info-item strong {
+        font-size: 0.95rem !important;
+        color: var(--accent) !important;
+        display: block;
+        margin-bottom: 2px;
+        font-family: 'Playfair Display', serif;
+    }
+    .info-item span,
+    .info-item p {
+        font-size: 0.5rem !important;
+        color: rgba(255,255,255,0.55) !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        line-height: 1.4;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+
+    /* ─── ROOM CARDS ─── */
     .room-grid { display: block; }
-    .room-card { margin-bottom: 3.5rem; border-radius: 12px; }
-    .room-carousel img { height: 240px; }
-    .room-info { padding: 2rem 1.25rem; }
-    .room-info h3 { font-size: 1.4rem; }
-    .room-footer { flex-direction: column; align-items: stretch; gap: 1.5rem; padding-top: 1.5rem; }
-    .room-price { text-align: center; font-size: 1.15rem; width: 100%; }
-    .room-footer .btn { width: 100%; }
+    .room-card { margin-bottom: 3rem; border-radius: 12px; }
+    .room-carousel img { height: 220px; }
+    .room-info { padding: 1.75rem 1.25rem; }
+    .room-info h3 { font-size: 1.3rem; }
+    .room-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.25rem;
+        padding-top: 1.25rem;
+    }
+    .room-price { text-align: center; width: 100%; }
+    .room-footer .btn { width: 100%; justify-content: center; }
 
-    /* Booking Portal */
-    .booking-portal { padding-top: 100px; padding-bottom: 3rem; }
-    .booking-header { margin-bottom: 2rem; }
-    .booking-header .section-title { font-size: 1.8rem; }
-    .booking-step-container { padding: 2.5rem 1.25rem; margin: 0; border-radius: 0; box-shadow: none; border-left: none; border-right: none; }
-    .booking-step-container h3 { font-size: 1.5rem; margin-bottom: 2rem; }
-    .booking-form-grid { flex-direction: column; gap: 2rem; margin-bottom: 2.5rem; }
-    
-    .flatpickr-calendar { width: 100% !important; max-width: 310px; left: 50% !important; transform: translateX(-50%) !important; }
-    
-    .room-selection-grid { padding: 0 1rem; gap: 1.5rem; }
-    .room-selection-card { flex-direction: column; border-radius: 12px; margin-bottom: 1rem; }
-    .room-selection-card img { width: 100%; height: 210px; }
-    .room-selection-card .content { padding: 1.75rem 1.25rem; }
-    .room-selection-card h4 { font-size: 1.5rem; margin-bottom: 0.75rem; }
-    .selection-description { font-size: 0.9rem; margin-bottom: 1.25rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
-    
-    .price-box { flex-direction: column; gap: 1.5rem; text-align: center; }
+
+    /* ─── CALENDAR (Flatpickr) ─── */
+    .flatpickr-calendar {
+        width: calc(100vw - 3rem) !important;
+        max-width: 310px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        position: absolute !important;
+        z-index: 9999 !important;
+        overflow: hidden !important;
+    }
+    /* Ensure day cells never overflow the calendar */
+    .flatpickr-day {
+        max-width: 38px !important;
+        height: 38px !important;
+        line-height: 38px !important;
+        margin: 2px !important;
+    }
+    .flatpickr-days, .dayContainer {
+        width: 100% !important;
+        min-width: unset !important;
+        max-width: 100% !important;
+    }
+
+
+    /* ─── BOOKING PORTAL ─── */
+    .booking-portal { padding-top: 90px; padding-bottom: 3rem; }
+    .booking-header { margin-bottom: 2rem; padding: 0 1rem; }
+    .booking-header .section-title { font-size: 1.75rem; }
+    .booking-step-container {
+        padding: 2rem 1.25rem;
+        margin: 0 0.75rem;
+        border-radius: 12px;
+    }
+    .booking-step-container h3 { font-size: 1.35rem; margin-bottom: 1.75rem; }
+    .booking-form-grid { flex-direction: column; gap: 1.75rem; margin-bottom: 2rem; }
+
+    .room-selection-grid { padding: 0; gap: 1.5rem; }
+    .room-selection-card { flex-direction: column; border-radius: 12px; }
+    .room-selection-card img { width: 100%; height: 200px; }
+    .room-selection-card .content { padding: 1.5rem 1.25rem; }
+    .room-selection-card h4 { font-size: 1.3rem; margin-bottom: 0.6rem; }
+    .selection-description {
+        font-size: 0.87rem;
+        margin-bottom: 1.25rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+    .price-box { flex-direction: column; gap: 1.25rem; text-align: center; }
     .pricing { justify-content: center; width: 100%; }
-    .price-box .btn { width: 100%; }
+    .price-box .btn { width: 100%; justify-content: center; }
 
-    /* Confirmation Card */
-    .success-card { padding: 4rem 1.25rem !important; }
-    .success-icon-box { margin-bottom: 2rem; }
+    .success-card { padding: 3.5rem 1.25rem !important; }
+    .success-icon-box { margin-bottom: 1.75rem; }
 
-    /* Footer */
-    .footer-top { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-    .footer-info, .footer-nav, .footer-contact { align-items: center; }
-    .footer-bottom { flex-direction: column; gap: 1.25rem; text-align: center; }
+
+    /* ─── FOOTER ─── */
+    .footer { padding: 3.5rem 0 0; }
+    .footer-top {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+    }
+
+    /* Footer info block */
+    .footer-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1.25rem;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-info p { margin-top: 1rem; font-size: 0.85rem; opacity: 0.65; }
+
+    /* Hide footer nav links on mobile — redundant navigation */
+    .footer-nav { display: none !important; }
+
+
+    /* Footer contact details */
+    .footer-contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1.25rem;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        gap: 0.75rem;
+    }
+    .footer-contact p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        margin: 0;
+        font-size: 0.88rem;
+    }
+    .footer-contact svg { margin-bottom: 2px; }
+
+    /* Footer bottom bar */
+    .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        text-align: center;
+        padding: 1.5rem 1.25rem;
+        font-size: 0.7rem;
+    }
 }
+

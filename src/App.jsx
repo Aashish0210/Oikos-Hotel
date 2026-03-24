@@ -53,10 +53,30 @@ const App = () => {
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    return () => observer.disconnect();
+    const revealEls = document.querySelectorAll('.reveal');
+    revealEls.forEach(el => observer.observe(el));
+
+    // Fallback: force-reveal any element already in viewport on load
+    revealEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      }
+    });
+
+    // Safety net: after 2.5s, reveal anything still hidden
+    const fallbackTimer = setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        el.classList.add('visible');
+      });
+    }, 2500);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimer);
+    };
   }, [bookingStep]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -132,6 +152,11 @@ const App = () => {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
         <span>Chat with Us</span>
       </a>
+
+      {/* Mobile nav backdrop */}
+      {isMenuOpen && (
+        <div className="nav-backdrop active" onClick={() => setIsMenuOpen(false)} />
+      )}
 
       <nav id="main-nav" className={`${isScrolled ? 'scrolled' : ''} ${bookingStep !== 'landing' ? 'dark-mode' : ''}`}>
         <div className="container nav-wrapper">
@@ -458,10 +483,14 @@ const BookingPortal = ({ step, setStep, rooms, lastBookedRoom, setLastBookedRoom
             <div className="booking-room-selection">
                 <div className="booking-summary-bar">
                     <div className="summary-item">
-                        <strong>Dates:</strong> {selectedDates && selectedDates.length === 2 ? `${selectedDates[0].toLocaleDateString()} - ${selectedDates[1].toLocaleDateString()}` : 'No dates selected'} ({calculateNights()} nights)
+                        <strong>Dates</strong>
+                        {selectedDates && selectedDates.length === 2
+                            ? `${selectedDates[0].toLocaleDateString()} – ${selectedDates[1].toLocaleDateString()} (${calculateNights()} nights)`
+                            : 'No dates selected'}
                     </div>
                     <div className="summary-item">
-                        <strong>Guests:</strong> {guestCount}
+                        <strong>Guests</strong>
+                        {guestCount} {guestCount === 1 ? 'Guest' : 'Guests'}
                     </div>
                     <button className="btn btn-secondary btn-sm" onClick={() => setStep('select-dates')}>Edit Dates</button>
                 </div>
