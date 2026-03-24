@@ -1405,26 +1405,35 @@ RADICAL MOBILE OVERHAUL (Optimized for 375px-480px)
     .section { padding: 4rem 1rem !important; }
     .container { padding: 0 1.25rem; }
     
-    /* Navigation */
-    #main-nav { height: 70px; }
-    .nav-wrapper { justify-content: space-between; gap: 0; }
-    .logo { gap: 2px; }
-    .logo .oikos { font-size: 1rem; }
-    .logo .hotel { font-size: 0.5rem; }
-    .nav-links { display: none; } /* Hide secondary links on mobile to save space */
-    .nav-btn { font-size: 0.65rem; padding: 0.75rem 1rem; }
+    /* Enhanced Mobile Navbar */
+    #main-nav { 
+        height: 65px; 
+        background: rgba(15, 23, 42, 0.95) !important; 
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-wrapper { padding: 0 1.25rem; height: 100%; }
+    .logo .oikos { font-size: 0.9rem; }
+    .logo .hotel { font-size: 0.45rem; }
+    .nav-btn { background: var(--accent) !important; color: var(--secondary) !important; font-weight: 800; border: none; }
 
-    /* Hero Section */
-    .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; }
-    .hero-content { padding: 0; text-align: center; }
-    .hero h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 1.5rem; }
-    .hero-actions { display: flex; flex-direction: column; width: 100%; gap: 1rem; }
-    .hero-actions .btn { width: 100%; justify-content: center; padding: 1.15rem; }
-    
-    .hero-lower-info { position: relative; background: var(--secondary); padding: 3rem 1rem; margin-top: -1px; }
-    .info-grid { flex-direction: column; gap: 2.5rem; }
+    /* Modern Mobile Hero Stats */
+    .hero { min-height: 75vh; }
+    .hero-lower-info { 
+        position: relative; 
+        background: var(--secondary); 
+        padding: 2rem 0; 
+        border-top: 4px solid var(--accent);
+    }
+    .info-grid { 
+        display: grid !important; 
+        grid-template-columns: repeat(3, 1fr) !important; 
+        gap: 0.5rem !important;
+        padding: 0 1rem;
+    }
     .info-item { text-align: center !important; }
-    .info-item strong { font-size: 1.75rem; }
+    .info-item strong { font-size: 1.25rem !important; display: block; margin-bottom: 0.25rem; color: var(--accent); }
+    .info-item p { font-size: 0.55rem !important; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); opacity: 0.8; }
 
     /* Room Cards */
     .room-grid { display: block; }
