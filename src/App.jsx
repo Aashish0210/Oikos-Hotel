@@ -148,7 +148,7 @@ const App = () => {
   return (
     <div className="app-container">
       {/* Floating WhatsApp - logic consistent with original */}
-      <a href="https://wa.me/60123456789" className="whatsapp-float" target="_blank" rel="noreferrer">
+      <a href={`https://wa.me/9779766386790?text=${encodeURIComponent('Hello! I am interested in booking a room at The Oikos Hotel. Could you please provide more details about availability and rates? Thank you!')}`} className="whatsapp-float" target="_blank" rel="noreferrer">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
         <span>Chat with Us</span>
       </a>
@@ -375,7 +375,7 @@ const App = () => {
             <div className="footer-contact">
               <p><MapPin size={16} /> <span><strong>Address:</strong> No. 2 & 3, Jalan Delima 2, Pusat Perdagangan Pontian, 82000 Pontian, Johor, Malaysia</span></p>
               <p><Clock size={16} /> <span><strong>Check-in:</strong> 2:00 PM | <strong>Check-out:</strong> 12:00 PM</span></p>
-              <p><Phone size={16} /> <span><strong>Tel:</strong> +60 7-688 3333</span></p>
+              <p><Phone size={16} /> <span><strong>Tel:</strong> <a href={`https://wa.me/9779766386790?text=${encodeURIComponent('Hello! I am interested in booking a room at The Oikos Hotel. Could you please provide more details about availability and rates? Thank you!')}`} target="_blank" rel="noreferrer" className="footer-phone-link">+977 976-6386790</a></span></p>
               <p><Mail size={16} /> <span><strong>Email:</strong> info@theoikoshotel.com.my</span></p>
               <p><Car size={16} /> <span><strong>Parking:</strong> On-site (RM 6/day)</span></p>
             </div>
