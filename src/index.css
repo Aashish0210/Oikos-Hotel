@@ -847,31 +847,17 @@ a {
     }
 }
 
-/* WhatsApp Float */
-.whatsapp-float {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background-color: #25d366;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    z-index: 2000;
-    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-    font-weight: 700;
-    font-size: 0.9rem;
-    transition: var(--transition-base);
+/* Footer Contact Links */
+.footer-contact a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color var(--transition-fast);
 }
 
-.whatsapp-float:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+.footer-contact a:hover {
+    color: var(--accent);
+    text-decoration: underline;
 }
-
-.whatsapp-float img { width: 20px; }
 
 /* Footer Refinement */
 .footer {
@@ -1040,9 +1026,6 @@ a {
 
 @media (max-width: 480px) {
     .hero h1 { font-size: 2.2rem; }
-    .whatsapp-float { bottom: 20px; right: 20px; padding: 10px 15px; font-size: 0.9rem; }
-    .whatsapp-float span { display: none; } /* Hide text on very small screens */
-    .whatsapp-float img { width: 30px; }
     
     .section-title { font-size: 1.8rem; }
     .lead { font-size: 1.1rem; }
@@ -1830,29 +1813,5 @@ a {
     }
 }
 
-/* ===== WhatsApp Phone Link ===== */
-.footer-phone-link {
-    color: #25d366;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color var(--transition-fast), opacity var(--transition-fast);
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
 
-.footer-phone-link::before {
-    content: '';
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    background: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg') no-repeat center/contain;
-    flex-shrink: 0;
-}
-
-.footer-phone-link:hover {
-    color: #1ebe5d;
-    opacity: 0.85;
-    text-decoration: underline;
-}
 
