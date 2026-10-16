@@ -10,8 +10,6 @@ import {
   Tv,
   Clock,
   Phone,
-  Smartphone,
-  Printer,
   Mail
 } from 'lucide-react';
 
@@ -337,10 +335,8 @@ const App = () => {
             </div>
             <div className="footer-contact">
               <p><MapPin size={16} /> <span><strong>Address:</strong> No. 2 & 3, Jalan Delima 2, Pusat Perdagangan Pontian, 82000 Pontian, Johor Darul Takzim, Malaysia</span></p>
-              <p><Phone size={16} /> <span><strong>Tel:</strong> <a href="tel:+6076881228">+607-688 1228</a></span></p>
-              <p><Smartphone size={16} /> <span><strong>Mobile:</strong> <a href="tel:+601121002443">+60(11) 2100 2443</a> (Siow Fe Siong)</span></p>
-              <p><Printer size={16} /> <span><strong>Fax:</strong> +607-674 3478</span></p>
-              <p><Mail size={16} /> <span><strong>Email:</strong> <a href="mailto:siowfs@theoikoshotel.com.my">siowfs@theoikoshotel.com.my</a> | <a href="mailto:travelhotel.sdnbhd@gmail.com">travelhotel.sdnbhd@gmail.com</a></span></p>
+              <p><Phone size={16} /> <span><strong>Tel:</strong> <a href="tel:+6076881228">+60 7-6881228</a></span></p>
+              <p><Mail size={16} /> <span><strong>Email:</strong> <a href="mailto:Reservations@theoikoshotel.com.my">Reservations@theoikoshotel.com.my</a></span></p>
               <p><Clock size={16} /> <span><strong>Check-in:</strong> 2:00 PM | <strong>Check-out:</strong> 12:00 PM</span></p>
               <p><Car size={16} /> <span><strong>Parking:</strong> On-site available</span></p>
             </div>

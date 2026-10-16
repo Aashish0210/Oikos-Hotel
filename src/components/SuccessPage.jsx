@@ -14,7 +14,7 @@ const SuccessPage = () => {
         <a href="/" className="btn btn-primary">
           <Home size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Return Home
         </a>
-        <a href="mailto:siowfs@theoikoshotel.com.my" className="btn btn-secondary">
+        <a href="mailto:Reservations@theoikoshotel.com.my" className="btn btn-secondary">
           <Mail size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> Contact Us
         </a>
       </div>
