@@ -98,17 +98,30 @@ const App = () => {
 
   const rooms = [
     {
+      id: 'deluxe-family',
+      name: 'Deluxe Family Room',
+      description: 'Scenic family accommodation featuring a king bed and a super single bed with windows overlooking the shore.',
+      amenities: [
+        '1 King + 1 Super Single Bed',
+        'Panoramic Sea View Window',
+        'Sofa Living Lounge Area',
+        'Private Ensuite Bathroom',
+        'Air Conditioning · Free WiFi'
+      ],
+      images: ['/assets/room_junior_suite_hd.jpg', '/assets/room_junior_suite_view2.jpg']
+    },
+    {
       id: 'junior',
       name: 'Junior Suite Room',
       description: 'Our premier 42 m² suite featuring a king bed, living lounge seating, and panoramic Malacca Strait views.',
       amenities: [
         '1 King-size Bed · 42 m²',
-        'Panoramic Sea View Window',
-        'Sofa Living Lounge Area',
         'Ensuite Bathroom with Bidet',
-        'Air Conditioning · Free WiFi'
+        'Work Desk · Electric Kettle',
+        'Air Conditioning',
+        'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_junior_suite_hd.jpg', '/assets/room_junior_suite_view2.jpg', '/assets/room_junior_suite_bath.jpg']
+      images: ['/assets/room_deluxe_king_hd.jpg']
     },
     {
       id: 'family',
@@ -121,7 +134,7 @@ const App = () => {
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_family_hd.jpg', '/assets/room_family_angle.jpg', '/assets/room_family_bath.jpg']
+      images: ['/assets/room_deluxe_family_hd.jpg', '/assets/room_family_hd.jpg', '/assets/room_family_angle.jpg']
     },
     {
       id: 'super-family',
@@ -134,20 +147,7 @@ const App = () => {
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_super_family_beds_hd.png', '/assets/room_super_family_bath.jpg']
-    },
-    {
-      id: 'deluxe-family',
-      name: 'Deluxe Family Room',
-      description: 'Scenic family accommodation featuring a king bed and a super single bed with windows overlooking the shore.',
-      amenities: [
-        '1 King + 1 Super Single Bed',
-        'Window with Coastal View',
-        'Private Ensuite Bathroom',
-        'Air Conditioning',
-        'Flat-screen TV · Free WiFi'
-      ],
-      images: ['/assets/room_deluxe_family_hd.jpg']
+      images: ['/assets/room_super_family_beds_hd.png']
     },
     {
       id: 'deluxe',
@@ -160,7 +160,7 @@ const App = () => {
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_deluxe_king_hd.jpg', '/assets/room_deluxe_tv.jpg']
+      images: ['/assets/room_deluxe_king_hd.jpg']
     },
     {
       id: 'twin',
@@ -186,7 +186,7 @@ const App = () => {
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_queen_bed_hd.png', '/assets/room_queen_bath.jpg']
+      images: ['/assets/room_queen_bed_hd.png']
     },
     {
       id: 'single',
@@ -199,7 +199,7 @@ const App = () => {
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_standard_single_bed.jpg', '/assets/room_standard_single_bath.jpg']
+      images: ['/assets/room_standard_single_bed.jpg']
     }
   ];
 
