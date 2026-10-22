@@ -286,7 +286,7 @@ const App = () => {
               <span><Wifi size={14} /> Free High-Speed WiFi</span>
               <span><Bath size={14} /> Ensuite Bathrooms</span>
               <span><Wind size={14} /> Air Conditioning</span>
-              <span><Car size={14} /> Private Parking</span>
+              <span><Car size={14} /> Public Parking</span>
             </div>
           </div>
           <div className="story-image reveal">
@@ -460,7 +460,7 @@ const App = () => {
               <p><Phone size={16} /> <span><strong>Tel:</strong> <a href="tel:+6076881228">+60 7-6881228</a></span></p>
               <p><Mail size={16} /> <span><strong>Email:</strong> <a href="mailto:Reservations@theoikoshotel.com.my">Reservations@theoikoshotel.com.my</a></span></p>
               <p><Clock size={16} /> <span><strong>Check-in:</strong> 2:00 PM | <strong>Check-out:</strong> 12:00 PM</span></p>
-              <p><Car size={16} /> <span><strong>Parking:</strong> On-site available</span></p>
+              <p><Car size={16} /> <span><strong>Parking:</strong> Public parking available</span></p>
             </div>
           </div>
           <div className="footer-bottom">
