@@ -134,7 +134,7 @@ const App = () => {
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_deluxe_family_hd.jpg', '/assets/room_family_hd.jpg', '/assets/room_family_angle.jpg']
+      images: ['/assets/room_deluxe_family_hd.jpg', '/assets/room_family_hd.jpg']
     },
     {
       id: 'super-family',
