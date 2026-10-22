@@ -98,6 +98,19 @@ const App = () => {
 
   const rooms = [
     {
+      id: 'junior',
+      name: 'Junior Suite Room',
+      description: 'Our premier 42 m² suite featuring a king bed, living lounge seating, and panoramic Malacca Strait views.',
+      amenities: [
+        '1 King-size Bed · 42 m²',
+        'Panoramic Sea View Window',
+        'Sofa Living Lounge Area',
+        'Ensuite Bathroom with Bidet',
+        'Air Conditioning · Free WiFi'
+      ],
+      images: ['/assets/room_junior_suite_hd.jpg', '/assets/room_junior_suite_view2.jpg', '/assets/room_junior_suite_bath.jpg']
+    },
+    {
       id: 'family',
       name: 'Family Room',
       description: 'Thoughtfully designed for families or groups of 3, featuring one queen bed and one single bed.',
@@ -135,19 +148,6 @@ const App = () => {
         'Flat-screen TV · Free WiFi'
       ],
       images: ['/assets/room_deluxe_family_hd.jpg']
-    },
-    {
-      id: 'junior',
-      name: 'Junior Suite Room',
-      description: 'Our premier 42 m² suite featuring a king bed, living lounge seating, and panoramic Malacca Strait views.',
-      amenities: [
-        '1 King-size Bed · 42 m²',
-        'Panoramic Sea View Window',
-        'Sofa Living Lounge Area',
-        'Ensuite Bathroom with Bidet',
-        'Air Conditioning · Free WiFi'
-      ],
-      images: ['/assets/room_junior_suite_hd.jpg', '/assets/room_junior_suite_view2.jpg', '/assets/room_junior_suite_bath.jpg']
     },
     {
       id: 'deluxe',
