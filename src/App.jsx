@@ -98,71 +98,6 @@ const App = () => {
 
   const rooms = [
     {
-      id: 'junior',
-      name: 'Junior Suite Room',
-      description: 'Our premier 42 m² suite featuring a king bed, living lounge seating, and panoramic Malacca Strait views.',
-      amenities: [
-        '1 King-size Bed · 42 m²',
-        'Panoramic Sea View Window',
-        'Sofa Living Lounge Area',
-        'Ensuite Bathroom with Bidet',
-        'Air Conditioning · Free WiFi'
-      ],
-      images: ['/assets/room_junior_suite_hd.jpg', '/assets/room_junior_suite_view2.jpg', '/assets/room_junior_suite_bath.jpg']
-    },
-    {
-      id: 'single',
-      name: 'Standard Single Room',
-      description: 'Cozy and efficient room with a super single bed, ideal for solo travelers and brief business stays.',
-      amenities: [
-        '1 Super Single Bed',
-        'Private Ensuite Bathroom',
-        'Work Desk · Electric Kettle',
-        'Air Conditioning',
-        'Flat-screen TV · Free WiFi'
-      ],
-      images: ['/assets/room_standard_single_bed.jpg', '/assets/room_standard_single_bath.jpg']
-    },
-    {
-      id: 'queen',
-      name: 'Queen Room',
-      description: 'Modern, peaceful comfort featuring a plush queen bed and warm ambient lighting for a restful stay.',
-      amenities: [
-        '1 Queen-size Bed',
-        'Private Ensuite Bathroom',
-        'Work Desk · Electric Kettle',
-        'Air Conditioning',
-        'Flat-screen TV · Free WiFi'
-      ],
-      images: ['/assets/room_queen_bed_hd.png', '/assets/room_queen_bath.jpg']
-    },
-    {
-      id: 'deluxe',
-      name: 'Deluxe Room',
-      description: 'Generously appointed boutique room for couples with a king bed and handcrafted timber headboard.',
-      amenities: [
-        '1 King-size Bed',
-        'Ensuite Bathroom with Bidet',
-        'Work Desk · Electric Kettle',
-        'Air Conditioning',
-        'Flat-screen TV · Free WiFi'
-      ],
-      images: ['/assets/room_deluxe_king_hd.jpg', '/assets/room_deluxe_tv.jpg']
-    },
-    {
-      id: 'twin',
-      name: 'Deluxe Twin Room',
-      description: 'Bright and airy room with windows providing natural light and two comfortable super single beds.',
-      amenities: [
-        '2 Super Single Beds',
-        'Window (Natural Daylight)',
-        'Private Ensuite Bathroom',
-        'Air Conditioning',
-        'Flat-screen TV · Free WiFi'
-      ],
-      images: ['/assets/room_deluxe_twin_hd.jpg', '/assets/room_twin_bed.jpg']
-    },
-    {
       id: 'family',
       name: 'Family Room',
       description: 'Thoughtfully designed for families or groups of 3, featuring one queen bed and one single bed.',
@@ -200,6 +135,71 @@ const App = () => {
         'Flat-screen TV · Free WiFi'
       ],
       images: ['/assets/room_deluxe_family_hd.jpg']
+    },
+    {
+      id: 'junior',
+      name: 'Junior Suite Room',
+      description: 'Our premier 42 m² suite featuring a king bed, living lounge seating, and panoramic Malacca Strait views.',
+      amenities: [
+        '1 King-size Bed · 42 m²',
+        'Panoramic Sea View Window',
+        'Sofa Living Lounge Area',
+        'Ensuite Bathroom with Bidet',
+        'Air Conditioning · Free WiFi'
+      ],
+      images: ['/assets/room_junior_suite_hd.jpg', '/assets/room_junior_suite_view2.jpg', '/assets/room_junior_suite_bath.jpg']
+    },
+    {
+      id: 'deluxe',
+      name: 'Deluxe Room',
+      description: 'Generously appointed boutique room for couples with a king bed and handcrafted timber headboard.',
+      amenities: [
+        '1 King-size Bed',
+        'Ensuite Bathroom with Bidet',
+        'Work Desk · Electric Kettle',
+        'Air Conditioning',
+        'Flat-screen TV · Free WiFi'
+      ],
+      images: ['/assets/room_deluxe_king_hd.jpg', '/assets/room_deluxe_tv.jpg']
+    },
+    {
+      id: 'twin',
+      name: 'Deluxe Twin Room',
+      description: 'Bright and airy room with windows providing natural light and two comfortable super single beds.',
+      amenities: [
+        '2 Super Single Beds',
+        'Window (Natural Daylight)',
+        'Private Ensuite Bathroom',
+        'Air Conditioning',
+        'Flat-screen TV · Free WiFi'
+      ],
+      images: ['/assets/room_deluxe_twin_hd.jpg', '/assets/room_twin_bed.jpg']
+    },
+    {
+      id: 'queen',
+      name: 'Queen Room',
+      description: 'Modern, peaceful comfort featuring a plush queen bed and warm ambient lighting for a restful stay.',
+      amenities: [
+        '1 Queen-size Bed',
+        'Private Ensuite Bathroom',
+        'Work Desk · Electric Kettle',
+        'Air Conditioning',
+        'Flat-screen TV · Free WiFi'
+      ],
+      images: ['/assets/room_queen_bed_hd.png', '/assets/room_queen_bath.jpg']
+    },
+    {
+      id: 'single',
+      name: 'Standard Single Room',
+      description: 'Cozy and efficient room with a super single bed, ideal for solo travelers and brief business stays.',
+      amenities: [
+        '1 Super Single Bed',
+        'Private Ensuite Bathroom',
+        'Work Desk · Electric Kettle',
+        'Air Conditioning',
+        'Flat-screen TV · Free WiFi'
+      ],
+      images: ['/assets/room_standard_single_bed.jpg', '/assets/room_standard_single_bath.jpg']
     }
   ];
 
