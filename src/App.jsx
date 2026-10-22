@@ -173,7 +173,7 @@ const App = () => {
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_deluxe_twin_hd.jpg', '/assets/room_twin_bed.jpg']
+      images: ['/assets/room_deluxe_twin_hd.jpg']
     },
     {
       id: 'queen',
