@@ -559,19 +559,35 @@ a {
     }
 }
 
-/* Room Grid */
+/* Rooms Section Container for 4-column grid */
+#rooms .container {
+    max-width: 1440px;
+    width: 95%;
+}
+
+/* Room Grid - 4, 4 cards (4 columns desktop, 2 tablet, 1 mobile) */
 .room-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    margin-top: 4rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
     align-items: stretch;
 }
 
+@media (max-width: 1240px) {
+    .room-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
 @media (max-width: 640px) {
-    .room-grid { display: block; }
-    .room-card { margin-bottom: 2.5rem; }
-    .room-info { padding: 1.5rem; }
+    .room-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .room-card { margin-bottom: 0; }
+    .room-info { padding: 1.25rem; }
     .room-price { font-size: 1rem; }
     .room-footer { padding-top: 1rem; }
 }
@@ -585,11 +601,11 @@ a {
     flex-direction: column;
     height: 100%;
     transition: var(--transition-base);
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .room-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-xl);
 }
 
@@ -643,95 +659,155 @@ a {
     width: 25px;
 }
 
-/* Room Carousel */
-.room-carousel {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    gap: 0;
-    width: 100%;
-    scrollbar-width: none;
-}
-.room-carousel::-webkit-scrollbar {
-    display: none;
-}
-.room-carousel img {
-    flex: 0 0 100%;
-    width: 100%;
-    height: 280px; /* Taller images */
-    object-fit: cover;
-    scroll-snap-align: start;
-    display: block;
-    transition: var(--transition-slow);
-}
-
-.room-card:hover .room-carousel img {
-    transform: scale(1.05);
-}
-/* Carousel Nav Buttons */
+/* Room Image Frame & Hover */
 .room-img {
     position: relative;
     overflow: hidden;
+    width: 100%;
+    height: 230px;
+    background: #0f172a;
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
 }
+
+.room-image-frame {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.room-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.room-card:hover .room-image-frame img {
+    transform: scale(1.05);
+}
+
+/* Carousel Nav Buttons & Indicators */
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.45);
-    color: #fff;
-    border: none;
-    padding: 6px 11px;
-    font-size: 1.4rem;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
     cursor: pointer;
     border-radius: 50%;
     z-index: 5;
     line-height: 1;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.25s ease, background 0.2s ease, transform 0.2s ease;
 }
-.room-img:hover .carousel-btn {
+
+.room-card:hover .carousel-btn {
     opacity: 1;
 }
-.carousel-btn.prev { left: 8px; }
-.carousel-btn.next { right: 8px; }
-.carousel-btn:hover { background: rgba(0,0,0,0.7); }
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-btn:hover {
+    background: var(--accent);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 6;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 4px 8px;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.carousel-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.carousel-indicator:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-indicator.active {
+    width: 16px;
+    border-radius: 3px;
+    background: var(--accent);
+}
 
 .room-info {
-    padding: 2rem;
+    padding: 1.4rem 1.25rem 1.25rem 1.25rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
 .room-info h3 {
-    margin-bottom: 0.75rem;
-    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.18rem;
+    font-weight: 700;
     color: var(--secondary);
+    min-height: 2.7rem;
+    display: flex;
+    align-items: center;
+    line-height: 1.3;
 }
 
 .room-info p {
     color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+    font-size: 0.84rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.55;
+    min-height: 3.8rem;
 }
 
 .room-amenities {
     list-style: none;
-    margin-bottom: 25px;
+    margin-bottom: 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
 }
 
 .room-amenities li {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-dark);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    line-height: 1.35;
+}
+
+.room-amenities .amenity-icon {
+    flex-shrink: 0;
+    color: var(--accent);
 }
 
 .room-amenities li::before {
@@ -743,13 +819,15 @@ a {
     display: flex;
     justify-content: center;
     align-items: center; /* V-centering */
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--bg-warm);
+    padding-top: 1.1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
     gap: 1rem;
 }
 
 .room-footer .btn {
     width: 100%;
+    font-size: 0.88rem;
+    padding: 0.65rem 1rem;
 }
 
 .room-price {
@@ -1687,9 +1765,10 @@ a {
 
     /* ─── ROOM CARDS ─── */
     .room-grid { display: block; }
-    .room-card { margin-bottom: 3rem; border-radius: 12px; }
-    .room-carousel img { height: 220px; }
-    .room-info { padding: 1.75rem 1.25rem; }
+    .room-img { height: 240px; }
+    .room-image-frame img { height: 240px; }
+    .carousel-btn { opacity: 0.95; width: 34px; height: 34px; }
+    .room-info { padding: 1.5rem 1.25rem; }
     .room-info h3 { font-size: 1.3rem; }
     .room-footer {
         flex-direction: column;
