@@ -16,7 +16,7 @@ import {
   Sparkles
 } from 'lucide-react';
 
-const BOOKING_URL = 'https://www.booking.com/hotel/my/the-oikos.en-gb.html?aid=2276380&label=msn-Jf2IWpGrTwUziJF7286E0Q-80745576698325%3Atikwd-80745763988249%3Aloc-128%3Aneo%3Amte%3Alp142622%3Adec%3Acid578349456%3Aagid1291927491243949%3Aclkid82401187996614b13b817b57f4bbe4bd&sid=7ea2ad755fe567413f078ed3b4990e2f&dest_id=-2405499&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1792044521&srpvid=b8decf058b28541110f1b7b36e112d41&type=total&ucfs=1&';
+const BOOKING_URL = 'https://www.trip.com/w/RCUlTh82sW2';
 
 const App = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -108,7 +108,7 @@ const App = () => {
         'Private Ensuite Bathroom',
         'Air Conditioning · Free WiFi'
       ],
-      images: ['/assets/room_junior_suite_hd.jpg', '/assets/room_junior_suite_view2.jpg']
+      images: ['/assets/room_junior_suite_hd.jpg', '/assets/room_deluxe_family_bath.png', '/assets/room_junior_suite_view2.jpg']
     },
     {
       id: 'junior',
@@ -121,7 +121,7 @@ const App = () => {
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_deluxe_king_hd.jpg']
+      images: ['/assets/room_junior_suite_main_v2.png', '/assets/room_bath_bw_subway.png']
     },
     {
       id: 'family',
@@ -147,7 +147,7 @@ const App = () => {
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_super_family_beds_hd.png']
+      images: ['/assets/room_super_family_beds_hd.png', '/assets/room_bath_blue_mosaic.png']
     },
     {
       id: 'deluxe',
@@ -160,7 +160,7 @@ const App = () => {
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_deluxe_king_hd.jpg']
+      images: ['/assets/room_deluxe_v2.jpg']
     },
     {
       id: 'twin',
@@ -186,7 +186,7 @@ const App = () => {
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
-      images: ['/assets/room_queen_bed_hd.png']
+      images: ['/assets/room_queen_v2.png']
     },
     {
       id: 'single',
@@ -301,8 +301,8 @@ const App = () => {
             <h2 className="section-title">Authentic Boutique Comfort</h2>
             <p>Simple, clean, and heritage-inspired rooms in the heart of Pontian.</p>
             <div className="rating-badge">
-              <span className="score">8.1</span>
-              <span className="label">Location Rating on Booking.com</span>
+              <span className="score">8.0</span>
+              <span className="label">Rated "Very Good" on Trip.com · 47 Reviews</span>
             </div>
           </div>
           <div className="room-grid">
@@ -424,13 +424,13 @@ const App = () => {
           <div className="review-grid">
             <div className="review-card card reveal">
               <div className="quote-icon"><Star size={24} fill="var(--accent)" stroke="var(--accent)" /></div>
-              <p>"Great location, near to everything. Strategic place for food hunters!"</p>
-              <div className="review-author">- 8.1 Location Rating</div>
+              <p>"Had a really pleasant stay at Oikos Hotel. The room was clean, comfortable, and well-maintained. The staff were friendly, helpful, and check-in was hassle-free."</p>
+              <div className="review-author">- Verified Guest on Trip.com</div>
             </div>
             <div className="review-card card reveal">
               <div className="quote-icon"><Star size={24} fill="var(--accent)" stroke="var(--accent)" /></div>
-              <p>"Simple, clean and budget-friendly. Perfect for a short getaway to see the southern tip of Asia."</p>
-              <div className="review-author">- Verified Guest</div>
+              <p>"Good location and nice sea view, walking distance to seaside with fast 24/7 front desk check-in."</p>
+              <div className="review-author">- Verified Guest on Trip.com</div>
             </div>
           </div>
         </div>
