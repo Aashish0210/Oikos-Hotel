@@ -182,7 +182,6 @@ const App = () => {
       amenities: [
         '1 Queen-size Bed',
         'Private Ensuite Bathroom',
-        'Work Desk · Electric Kettle',
         'Air Conditioning',
         'Flat-screen TV · Free WiFi'
       ],
