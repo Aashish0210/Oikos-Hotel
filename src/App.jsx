@@ -405,10 +405,10 @@ const App = () => {
               <p>Strategically located 50m from the Pontian seafront and 20 mins from Tanjung Piai National Park.</p>
               <p className="address-text"><strong>Address:</strong><br />No. 2 & 3, Jalan Delima 2, Pusat Perdagangan Pontian,<br />82000 Pontian, Johor Darul Takzim, Malaysia</p>
               <ul className="attractions">
-                <li><strong>Wang Wang (Chinese Cuisine)</strong> (50m)</li>
-                <li><strong>Nasi Ayam Sin Yap</strong> (50m)</li>
+                <li><strong>Seaside Alfresco dining</strong> (below the hotel, 3 mins walk)</li>
+                <li><strong>The famous Pontian Fish /Wet Market</strong> (10 mins walk)</li>
                 <li><strong>Tanjung Piai National Park</strong> (20 mins)</li>
-                <li><strong>Legoland Malaysia</strong> (40 mins)</li>
+                <li><strong>Legoland</strong> (50 mins)</li>
               </ul>
             </div>
           </div>
